@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isPresented = false
+    @State private var isOn = false
+    
     var body: some View {
-        Text("Hello, world!").padding()
+        VStack {
+            Text("Random text: \(Int.random(in: 0...100))")
+                .font(.largeTitle)
+            
+            Toggle(isOn: $isOn) {
+                Text("Toggle is on \(isOn ? "true" : "false")") 
+                    .font(.largeTitle)
+            }.padding(.all, 10)
+            
+            Button(action: {
+                self.isPresented.toggle()
+            }) {
+                Text("Show pop up")
+                    .font(.largeTitle)
+            }
+        }.sheet(isPresented: $isPresented) {
+            Text("Pop up")
+                .font(.largeTitle)
+        }
     }
 }
 
