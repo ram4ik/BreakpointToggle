@@ -13,11 +13,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            RandomView()
+            
             Text("Random text: \(Int.random(in: 0...100))")
                 .font(.largeTitle)
             
             Toggle(isOn: $isOn) {
-                Text("Toggle is on \(isOn ? "true" : "false")") 
+                Text("Toggle is on \(isOn ? "true" : "false")")
                     .font(.largeTitle)
             }.padding(.all, 10)
             
@@ -31,6 +33,13 @@ struct ContentView: View {
             Text("Pop up")
                 .font(.largeTitle)
         }
+    }
+}
+
+struct RandomView: View {
+    var body: some View {
+        Text("Random text: \(Int.random(in: 1...100))")
+            .font(.largeTitle)
     }
 }
 
